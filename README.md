@@ -11,6 +11,8 @@ What's different compared to the original microG GmsCore?
 
 * built as priv-app
 * fix build failing due missing com.vividsolutions:jts
+* add Wellbeing to known Google apps
+* fix GSuite Logins [by jimbo1qaz](https://github.com/jimbo1qaz/android_packages_apps_GmsCore/commit/9e972191c4fb2b0498f2ca881645a6481b8da537)
 * fix build issues [by FreeMobileOS](https://github.com/FreeMobileOS/android_packages_apps_GmsCore/commit/95e839146d4f65a3ee2455a14f138514f2683124)
 * Cast API work by armills [GmsCore](https://github.com/armills/android_packages_apps_GmsCore/tree/cast-mvp), [GmsApi](https://github.com/armills/android_external_GmsApi/tree/cast-mvp)
 * set package of intent prior to broadcasting [by voidstarstar](https://github.com/voidstarstar/android_packages_apps_GmsCore/commit/6c1a479bb10229512183351133f1df43c4297236)
