@@ -18,9 +18,40 @@ package com.google.android.gms.common.security;
 
 import android.content.Context;
 import android.util.Log;
+import org.conscrypt.OpenSSLProvider;
+import java.lang.reflect.Field;
+import java.security.Security;
+import javax.net.ssl.HttpsURLConnection;
+import javax.net.ssl.SSLContext;
+import javax.net.ssl.SSLServerSocketFactory;
+import javax.net.ssl.SSLSocketFactory;
 
 public class ProviderInstallerImpl {
     public static void insertProvider(Context context) {
-        Log.d("ProviderInstallerImpl", "yep, i should do something with Security here...");
+        int insertProviderAt = Security.insertProviderAt(new OpenSSLProvider("GmsCore_OpenSSL"), 1);
+	try {
+            if (insertProviderAt == 1) {
+                SSLContext instance = SSLContext.getInstance("Default");
+                Field declaredField = SSLSocketFactory.class.getDeclaredField("defaultSocketFactory");
+                declaredField.setAccessible(true);
+                declaredField.set(null, instance.getSocketFactory());
+                declaredField = SSLServerSocketFactory.class.getDeclaredField("defaultServerSocketFactory");
+                declaredField.setAccessible(true);
+                declaredField.set(null, instance.getServerSocketFactory());
+                Security.setProperty("ssl.SocketFactory.provider", "org.conscrypt.OpenSSLSocketFactoryImpl");
+                Security.setProperty("ssl.ServerSocketFactory.provider", "org.conscrypt.OpenSSLServerSocketFactoryImpl");
+                instance = SSLContext.getInstance("Default");
+                SSLContext.setDefault(instance);
+                HttpsURLConnection.setDefaultSSLSocketFactory(instance.getSocketFactory());
+                //HttpsURLConnection.setDefaultHostnameVerifier(new oat());
+                //TODO: Set the default HostnameVerifier
+                Log.i("ProviderInstaller", "Installed default security provider GmsCore_OpenSSL");
+            } else {
+                Log.e("ProviderInstaller", "Failed to install security provider GmsCore_OpenSSL, result: " + insertProviderAt);
+                throw new SecurityException();
+            }
+        } catch (Exception e) {
+            Log.d("ProviderInstaller", "Failed to insert provider");
+        }
     }
 }
