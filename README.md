@@ -18,6 +18,7 @@ What's different compared to the original microG GmsCore?
 * fix GSuite Logins [by jimbo1qaz](https://github.com/jimbo1qaz/android_packages_apps_GmsCore/commit/9e972191c4fb2b0498f2ca881645a6481b8da537)
 * fix build issues [by FreeMobileOS](https://github.com/FreeMobileOS/android_packages_apps_GmsCore/commit/95e839146d4f65a3ee2455a14f138514f2683124)
 * Cast API work by armills [GmsCore](https://github.com/armills/android_packages_apps_GmsCore/tree/cast-mvp), [GmsApi](https://github.com/armills/android_external_GmsApi/tree/cast-mvp)
+* Add implementation of ProviderInstallerImpl [by voidstarstar](https://github.com/voidstarstar/android_packages_apps_GmsCore/commit/0e54f62d5e243ec22219631ad69da924164fd259)
 * set package of intent prior to broadcasting [by voidstarstar](https://github.com/voidstarstar/android_packages_apps_GmsCore/commit/6c1a479bb10229512183351133f1df43c4297236)
 * built with [ThibG's fork of microG DroidGuard Helper](https://github.com/ThibG/android_packages_apps_RemoteDroidGuard)
 * fix for [microG issue #560 by ale5000](https://github.com/ale5000-git/android_packages_apps_GmsCore/commits/patch-1)
