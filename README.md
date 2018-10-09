@@ -25,7 +25,7 @@ What's different compared to the original microG GmsCore?
 
 ### Download
 
-The latest build can be downloaded [here](https://www.nanolx.org/apk/GmsCore.apk)
+The latest build can be downloaded [here](https://nanolx.org/fdroid/repo)
 
 ### Please refer to the [wiki](https://github.com/microg/android_packages_apps_GmsCore) for the original source
 
