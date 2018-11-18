@@ -170,7 +170,7 @@
     <string name="permission_scope_www.googleapis.com_auth_userinfo.profile">Просмотр основной информации об аккаунте</string>
     <string name="permission_scope_www.googleapis.com_auth_youtube">Управление аккаунтом YouTube</string>
     <string name="permission_scope_www.googleapis.com_auth_youtubepartner">Просматр и управлени своими активами и контентом на YouTube</string>
-    <string name="permission_scope_www.googleapis.com_auth_youtube.readonly">Посматр своего аккаунта YouTube</string>
+    <string name="permission_scope_www.googleapis.com_auth_youtube.readonly">Просмотр своего аккаунта YouTube</string>
     <string name="permission_scope_www.googleapis.com_auth_youtube.upload">Управление вашими видео на YouTube</string>
     <string name="permission_scope_www.googleapis.com_auth_yt_analytics_monetary.readonly">Простор на YouTube аналитики валютного отчеты для вашего контента YouTube</string>
     <string name="permission_scope_www.googleapis.com_auth_yt_analytics.readonly">Простотр на YouTube аналитических отчетов для вашего контента YouTube</string>
