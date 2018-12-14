@@ -9,7 +9,7 @@ microG GmsCore is a FLOSS (Free/Libre Open Source Software) framework to allow a
 
 What's different compared to the original microG GmsCore?
 
-* currently spoofed Play Services version: 14.7.97
+* currently spoofed Play Services version: 14.7.99
 
 * built as priv-app
 * fix build failing due missing com.vividsolutions:jts
@@ -25,6 +25,8 @@ What's different compared to the original microG GmsCore?
 * built with [ThibG's fork of microG DroidGuard Helper](https://github.com/ThibG/android_packages_apps_RemoteDroidGuard)
 * fix for [microG issue #560 by ale5000](https://github.com/ale5000-git/android_packages_apps_GmsCore/commits/patch-1)
 * temporarily put applications into whitelist when high-priority GCM messages are received, by [ale5000 and ccaapton](https://github.com/ale5000-git/android_packages_apps_GmsCore/commits/master)
+* [Add SERVICE_MISSING_PERMISSION to ConnectionResult](https://github.com/microg/android_external_GmsApi/pull/11) by yegortimoshenko [GmsApi submodule]
+* [ GoogleCloudMessaging getMessageType should never throw](https://github.com/yegortimoshenko/android_external_GmsLib/commit/fed94a84494a2a0ce1c15b465140e1ca3b0e591b) by yegortimoshenko [GmsLib submodule]
 
 ### Download
 

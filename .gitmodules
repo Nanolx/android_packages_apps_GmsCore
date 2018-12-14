@@ -10,8 +10,7 @@
 	url = https://github.com/microg/android_external_Wearable.git
 [submodule "extern/GmsLib"]
 	path = extern/GmsLib
-	url = https://github.com/chris42/android_external_GmsLib.git
-	branch = buildfix-1806
+	url = https://github.com/Nanolx/android_external_GmsLib.git
 [submodule "extern/vtm"]
 	path = extern/vtm
 	url = https://github.com/chris42/android_external_vtm.git
