@@ -16,6 +16,7 @@
   -->
 
 <resources>
+    <bool name="is_gmscore">true</bool>
     <bool name="gms_settings_in_launcher">false</bool>
     <bool name="gms_settings_in_systemsettings">true</bool>
 </resources>
