@@ -432,8 +432,7 @@
             android:name="org.microg.gms.ui.SettingsActivity"
             android:icon="@mipmap/ic_microg_settings"
             android:label="@string/gms_settings_name"
-            android:theme="@style/Theme.AppCompat.Settings.Dashboard"
-            android:enabled="@bool/gms_settings_in_launcher">
+            android:theme="@style/Theme.AppCompat.Settings.Dashboard">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
