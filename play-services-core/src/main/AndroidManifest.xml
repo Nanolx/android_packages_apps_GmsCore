@@ -449,12 +449,12 @@
             android:label="@string/gms_settings_name"
             android:theme="@style/Theme.AppCompat.Settings.Dashboard"
             android:enabled="@bool/gms_settings_in_systemsettings">
-            <intent-filter>
-                <action android:name="com.android.settings.action.APPLICATION_PREFERENCES" tools:targetApi="24"/>
+            <intent-filter tools:targetApi="24">
+                <action android:name="com.android.settings.action.APPLICATION_PREFERENCES"/>
+                <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
             <intent-filter>
                 <action android:name="com.android.settings.action.EXTRA_SETTINGS"/>
-                <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
             <meta-data android:name="com.android.settings.category" android:value="com.android.settings.category.device"/>
             <meta-data android:name="com.android.settings.icon" android:resource="@drawable/microg_light_color_24"/>
