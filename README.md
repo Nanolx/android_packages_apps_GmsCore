@@ -27,10 +27,13 @@ What's different compared to the original microG GmsCore?
 * temporarily put applications into whitelist when high-priority GCM messages are received, by [ale5000 and ccaapton](https://github.com/ale5000-git/android_packages_apps_GmsCore/commits/master)
 * [Add SERVICE_MISSING_PERMISSION to ConnectionResult](https://github.com/microg/android_external_GmsApi/pull/11) by yegortimoshenko
 * [GoogleCloudMessaging getMessageType should never throw](https://github.com/yegortimoshenko/android_external_GmsLib/commit/fed94a84494a2a0ce1c15b465140e1ca3b0e591b) by yegortimoshenko
-* improved russian translation by vavun [UnifiedNlp](https://github.com/Vavun/android_packages_apps_UnifiedNlp/commit/455e63b3ebaa6f8d595c4c40b39bac260b5a2e92), [GmsCore](https://github.com/Vavun/android_packages_apps_GmsCore/commit/bb0e40e6390d230d2fd9031e7d3c6645ae178390), [microGUiTools](https://github.com/Vavun/android_external_MicroGUiTools/commit/c7bb9018dd4f089b825684aa293c9f5646f65d64)
+* improved russian translation by vavun [UnifiedNlp](https://github.com/Vavun/android_packages_apps_UnifiedNlp/commit/455e63b3ebaa6f8d595c4c40b39bac260b5a2e92), GmsCore [1](https://github.com/Vavun/android_packages_apps_GmsCore/commit/bb0e40e6390d230d2fd9031e7d3c6645ae178390) / [2](https://github.com/Vavun/android_packages_apps_GmsCore/tree/patch-1), [microGUiTools](https://github.com/Vavun/android_external_MicroGUiTools/commit/c7bb9018dd4f089b825684aa293c9f5646f65d64),
 * [Light theme for Settings](https://github.com/microg/android_external_MicroGUiTools/pull/13) by cbviva
 * [Fix settings crashes for ASUS devices](https://github.com/microg/android_external_MicroGUiTools/pull/11) by emv412
 * [Move microG settings from Launcher to System Settings](https://github.com/Vavun/android_packages_apps_GmsCore/tree/patch-2) by vavun
+  * show microG settings in Launcher when on SDK 22 or older
+  * show microG settings in System Settings when on SDK 23 or newer
+  * show microG settings in App Overview on SDK 24 or newer
 
 ### Download
 
