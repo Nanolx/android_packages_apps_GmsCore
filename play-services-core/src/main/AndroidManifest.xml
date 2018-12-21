@@ -449,7 +449,7 @@
             android:label="@string/gms_settings_name"
             android:theme="@style/Theme.AppCompat.Settings.Dashboard"
             android:enabled="@bool/gms_settings_in_systemsettings">
-            <intent-filter tools:targetApi="24">
+            <intent-filter>
                 <action android:name="com.android.settings.action.APPLICATION_PREFERENCES"/>
                 <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
