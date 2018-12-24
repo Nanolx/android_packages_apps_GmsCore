@@ -25,7 +25,7 @@
     <string name="ask_service_permission_title"><xliff:g example="F-Droid">%1$s</xliff:g> хотел бы использовать:</string>
     <string name="account_manager_title">Google Account Manager</string>
     <string name="sorry">Извините…</string>
-	<string name="auth_before_connect">"Приложение на вашем устройстве пытается войти в учетную запись Google.
+    <string name="auth_before_connect">"Приложение на вашем устройстве пытается войти в учетную запись Google.
 
 Если это было намеренно, нажмите кнопку <b>Войти</b>, чтобы подключиться к странице входа в Google, если нет, нажмите <b>Отмена</b>, чтобы вернуться к приложению, которое вызвало это диалоговое окно."</string>
     <string name="auth_sign_in">Войти</string>
@@ -58,9 +58,9 @@
 
     <string name="service_status_disabled">Выключено</string>
     <string name="service_status_enabled">Активно</string>
-	<string name="service_status_automatic">Автоматически</string>
+    <string name="service_status_automatic">Автоматически</string>
     <string name="service_status_manual">Руководство</string>
-	
+
     <string name="menu_advanced">Дополнительно</string>
     <string name="list_no_item_none">Пусто</string>
 
@@ -89,7 +89,7 @@
 
     <string name="self_check_name_fake_sig_perm">Система поддерживает подмену подписи:</string>
     <string name="self_check_resolution_fake_sig_perm">Ваша прошивка не имеет нативной поддержки подмены подписи. Вы можете использовать Xposed или другие методы, чтобы активировать подмену подписи. Пожалуйста, ознакомьтесь с документацией, какая прошивка поддерживает подмену подписи и как использовать microG в прошивке, которая не поддерживает.</string>
-    <string name="self_check_name_perm_granted">Система разрешает подменять подпись:</string>
+    <string name="self_check_name_perm_granted">Система разрешает подмену подписи:</string>
     <string name="self_check_resolution_perm_granted">Ваша прошивка поддерживает подмену подписи, но требует дополнительных действий для ее активации. Пожалуйста, ознакомьтесь с документацией, где описано что нужно сделать.</string>
     <string name="self_check_name_system_spoofs">Система подменяет подписи:</string>
     <string name="self_check_resolution_system_spoofs">Пожалуйста, ознакомьтесь с документацией, где описано что нужно сделать.</string>
@@ -101,7 +101,7 @@
     <string name="self_check_resolution_app_installed">Установите приложение <xliff:g example="F-Droid">%1$s</xliff:g> или совместимое. Пожалуйста, ознакомьтесь с документацией, где описано какие приложения совместимы.</string>
     <string name="self_check_name_correct_sig"><xliff:g example="F-Droid">%1$s</xliff:g> имеет правильную подпись: </string>
     <string name="self_check_resolution_correct_sig">Либо установленный <xliff:g example="F-Droid">%1$s</xliff:g> не совместим, либо подмена подписи не активна для него. Пожалуйста, ознакомьтесь с документацией, где описано какие приложения или прошивки совместимы.</string>
-	
+
     <string name="self_check_name_battery_optimizations">Оптимизация энергопотребления отключена:</string>
     <string name="self_check_resolution_battery_optimizations">Нажмите здесь, чтобы разрешить приложению работать в фоне. Без этого некоторые приложения могут работать со сбоями</string>
 
@@ -112,7 +112,7 @@
     <string name="prefcat_configuration">Конфигурация</string>
     <string name="prefcat_google_services">Google сервисы</string>
     <string name="prefcat_location_service">Служба определения местоположения</string>
-	<string name="prefcat_operation_mode">Режим работы</string>
+    <string name="prefcat_operation_mode">Режим работы</string>
     <string name="prefcat_services">Сервисы</string>
     <string name="prefcat_test">Тест</string>
 
@@ -137,10 +137,10 @@
     <string name="pref_gcm_heartbeat_summary">"Интервал в секундах, для использования серверов Google. Увеличение этого числа сократит потребление батареи, но может привести к задержкам push-сообщений.\nУстарело, будет изменено в следующем релизе."</string>
     <string name="pref_gcm_apps_title">Приложения, использующие Google Cloud Messaging</string>
     <string name="pref_gcm_apps_summary">Список приложений, которые привязаны к Google Cloud Messaging.</string>
-	<string name="pref_gcm_confirm_new_apps_title">Подтверждать новые приложения</string>
+    <string name="pref_gcm_confirm_new_apps_title">Подтверждать новые приложения</string>
     <string name="pref_gcm_confirm_new_apps_summary">Спрашивать разрешение перед привязкой новых приложений для получения push-уведомлений</string>
-	<string name="pref_gcm_ping_interval">Интервал проверки: <xliff:g example="10 минут">%1$s</xliff:g></string>
-	
+    <string name="pref_gcm_ping_interval">Интервал проверки: <xliff:g example="10 минут">%1$s</xliff:g></string>
+
     <string name="pref_about_title">О сервисах microG</string>
     <string name="pref_about_summary">Информация о версии и используемые библиотеки</string>
 
@@ -170,11 +170,5 @@
     <string name="pref_snet_custom_url_title">URL стороннего сервера</string>
     <string name="pref_snet_custom_url_summary">Полный URL стороннего сервера, который отвечает на проверочные запросы SafetyNet</string>
     <string name="pref_snet_self_signed_title">Создавать сертификат самому</string>
-    <string name="pref_snet_status_official_info">официальный сервер</string>
-    <string name="pref_snet_status_self_signed_info">самоподписанный сертификат</string>
-    <string name="pref_snet_status_third_party_info">сторонний сервер</string>
     <string name="pref_snet_self_signed_summary">Вместо запросов на сервер подписывать SafetyNet локально, используя самостоятельно созданный сертификат. Большинство приложений будут отказываться использовать самоподписанные ответы.</string>
-    <string name="permdesc_fakePackageSignature">Приложение сможет обходить систему безопасности, выдавая себя за другое приложение.</string>
-    <string name="permlab_fakePackageSignature">Подмена подписи приложения</string>
-    
 </resources>
