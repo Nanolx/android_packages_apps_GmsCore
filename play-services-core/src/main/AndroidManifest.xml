@@ -431,12 +431,17 @@
         <activity
             android:name="org.microg.gms.ui.SettingsActivity"
             android:icon="@mipmap/ic_microg_settings"
+            android:roundIcon="@mipmap/ic_microg_settings"
             android:label="@string/gms_settings_name"
             android:theme="@style/Theme.AppCompat.Settings.Dashboard">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.APPLICATION_PREFERENCES"/>
+                <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
         </activity>
 
@@ -448,10 +453,6 @@
             android:label="@string/gms_settings_name"
             android:theme="@style/Theme.AppCompat.Settings.Dashboard"
             android:enabled="@bool/gms_settings_in_systemsettings">
-            <intent-filter>
-                <action android:name="com.android.settings.action.APPLICATION_PREFERENCES"/>
-                <category android:name="android.intent.category.DEFAULT"/>
-            </intent-filter>
             <intent-filter>
                 <action android:name="com.android.settings.action.EXTRA_SETTINGS"/>
             </intent-filter>
