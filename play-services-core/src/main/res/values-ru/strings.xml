@@ -16,7 +16,8 @@
 
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="gms_app_name">microG Services Core</string>
-    <string name="gms_settings_name">MicroG</string>
+    <string name="gms_settings_name">Настройки microG</string>
+    <string name="gms_settings_summary">Настройка и тестирование сервисов microG, облачных сообщений Google и навигационных бекендов UnifiedNlp.</string>
 
     <string name="just_a_sec">Пожалуйста, подождите...</string>
     <string name="google_account_label">Google</string>
@@ -171,4 +172,6 @@
     <string name="pref_snet_custom_url_summary">Полный URL стороннего сервера, который отвечает на проверочные запросы SafetyNet</string>
     <string name="pref_snet_self_signed_title">Создавать сертификат самому</string>
     <string name="pref_snet_self_signed_summary">Вместо запросов на сервер подписывать SafetyNet локально, используя самостоятельно созданный сертификат. Большинство приложений будут отказываться использовать самоподписанные ответы.</string>
+    <string name="permdesc_fakePackageSignature">Приложение сможет обходить систему безопасности, выдавая себя за другое приложение.</string>
+    <string name="permlab_fakePackageSignature">Подмена подписи приложения</string>
 </resources>
