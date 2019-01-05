@@ -17,5 +17,4 @@
 
 <resources>
     <bool name="is_gmscore">true</bool>
-    <bool name="gms_settings_in_systemsettings">false</bool>
 </resources>

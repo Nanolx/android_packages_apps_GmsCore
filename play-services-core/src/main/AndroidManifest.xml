@@ -451,8 +451,7 @@
             android:targetActivity="org.microg.gms.ui.SettingsActivity"
             android:icon="@drawable/microg_light_color_24"
             android:label="@string/gms_settings_name"
-            android:theme="@style/Theme.AppCompat.Settings.Dashboard"
-            android:enabled="@bool/gms_settings_in_systemsettings">
+            android:theme="@style/Theme.AppCompat.Settings.Dashboard">
             <intent-filter>
                 <action android:name="com.android.settings.action.EXTRA_SETTINGS"/>
             </intent-filter>
