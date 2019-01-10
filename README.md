@@ -11,10 +11,11 @@ What's different compared to the original microG GmsCore?
 
 * currently spoofed Play Services version: 14.7.99
 
-* built as priv-app
+* built as priv-app, set multiArch
 * fix build failing due missing com.vividsolutions:jts
 * add Wellbeing to known Google apps
 * changed version code generation to ease frequent beta builds
+  * append "(NanoDroid)" to version visible in UI
 * fixed SafetyNet default value being 'null' after enabling it for the first time
   * and show choosen server type in overview
 * fix GSuite Logins [by jimbo1qaz](https://github.com/jimbo1qaz/android_packages_apps_GmsCore/commit/9e972191c4fb2b0498f2ca881645a6481b8da537)
@@ -35,6 +36,7 @@ What's different compared to the original microG GmsCore?
   * show microG settings in System Settings when on SDK 23 or newer
   * show microG settings in App Overview on SDK 24 or newer
 * [Fix Login issue on KK](https://github.com/PorygonZRocks/android_packages_apps_GmsCore/commit/dced4cd6a35dcb39e2e14350ae17e848d52bee2a) by PorygonZRocks
+* add com.google.android.geo.API_KEY by guest4711
 
 ### Download
 
