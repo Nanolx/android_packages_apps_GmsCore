@@ -117,6 +117,7 @@
             android:value="@string/fake_signature"/>
 
         <!-- Location -->
+        <meta-data android:name="com.google.android.geo.API_KEY" android:value="AIzaSyAP-gfH3qvi6vgHZbSYwQ_XHqV_mXHhzIk"/>
 
         <service android:name="org.microg.gms.location.GoogleLocationManagerService">
             <intent-filter>
