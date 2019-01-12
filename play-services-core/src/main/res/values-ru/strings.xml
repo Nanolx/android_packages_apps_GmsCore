@@ -17,7 +17,7 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="gms_app_name">microG Services Core</string>
     <string name="gms_settings_name">Настройки microG</string>
-    <string name="gms_settings_summary">Настройка и тестирование сервисов microG, облачных сообщений Google и навигационных бекендов UnifiedNlp.</string>
+    <string name="gms_settings_summary">Настройка microG Services Core.</string>
 
     <string name="just_a_sec">Пожалуйста, подождите...</string>
     <string name="google_account_label">Google</string>
@@ -158,7 +158,7 @@
     <string name="gcm_unregister_after_deny_message">Вы запретили push-уведомления для приложения, которое уже привязано.\nВы хотите отвязать его сейчас чтобы больше не получать от него push-уведомлений?</string>
     <string name="gcm_messages_counter">Уведомлений: <xliff:g example="123">%1$d</xliff:g> (<xliff:g example="12345">%2$d</xliff:g> bytes)</string>
     <string name="gcm_state_disconnected">Текущий статус: Отключен</string>
-    <string name="gcm_state_connected">Текущий статус: Подключен <xliff:g example="2 hours ago">%1$s</xliff:g></string>
+    <string name="gcm_state_connected">Текущий статус: Подключён <xliff:g example="2 hours ago">%1$s</xliff:g></string>
 
     <string name="snet_intro">Google SafetyNet это система сертификации устройства, гарантирующая, что устройство корректно защищено и совместимо с Android CTS. Некоторые приложения используют SafetyNet из соображений безопасности или в качестве предварительной системы защиты от взлома.\n\nmicroG GmsCore содержит свободную реализацию SafetyNet, но официальный сервер требует, чтобы запросы были подписаны с помощью проприетарной системы DroidGuard. Изолированная версия DroidGuard доступна как отдельное приложение "DroidGuard Helper".</string>
 
@@ -166,12 +166,15 @@
 
     <string name="pref_snet_status_official_title">Использовать официальный сервер</string>
     <string name="pref_snet_status_official_summary">Требуется система без root и установленный microG DroidGuard Helper</string>
+    <string name="pref_snet_status_official_info">официальный сервер</string>
     <string name="pref_snet_status_third_party_title">Использовать сторонний сервер</string>
     <string name="pref_snet_status_third_party_summary">Сторонние сервера могут быть в состоянии ответить на запросы SafetyNet без подписи DroidGuard</string>
+    <string name="pref_snet_status_third_party_info">сторонний сервер</string>
     <string name="pref_snet_custom_url_title">URL стороннего сервера</string>
     <string name="pref_snet_custom_url_summary">Полный URL стороннего сервера, который отвечает на проверочные запросы SafetyNet</string>
     <string name="pref_snet_self_signed_title">Создавать сертификат самому</string>
     <string name="pref_snet_self_signed_summary">Вместо запросов на сервер подписывать SafetyNet локально, используя самостоятельно созданный сертификат. Большинство приложений будут отказываться использовать самоподписанные ответы.</string>
+    <string name="pref_snet_status_self_signed_info">самоподписанный сертификат</string>
     <string name="permdesc_fakePackageSignature">Приложение сможет обходить систему безопасности, выдавая себя за другое приложение.</string>
     <string name="permlab_fakePackageSignature">Подмена подписи приложения</string>
 </resources>
