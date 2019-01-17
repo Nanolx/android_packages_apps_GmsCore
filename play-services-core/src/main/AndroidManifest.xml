@@ -64,11 +64,6 @@
         android:name="org.microg.gms.EXTENDED_ACCESS"
         android:label="@string/perm_extended_access_label"
         android:protectionLevel="dangerous"/>
-    <permission
-        android:name="android.permission.FAKE_PACKAGE_SIGNATURE"
-        android:description="@string/permdesc_fakePackageSignature"
-        android:label="@string/permlab_fakePackageSignature"
-        android:protectionLevel="dangerous"/>
 
     <uses-permission android:name="android.permission.FAKE_PACKAGE_SIGNATURE"/>
 
