@@ -16,11 +16,16 @@
 
 package org.microg.gms.ui;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.text.TextUtils;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 
 import com.google.android.gms.R;
 
@@ -31,10 +36,14 @@ import org.microg.nlp.Preferences;
 import org.microg.tools.ui.AbstractDashboardActivity;
 import org.microg.tools.ui.ResourceSettingsFragment;
 
+import java.io.File;
+
 import static org.microg.gms.checkin.TriggerReceiver.PREF_ENABLE_CHECKIN;
+import static org.microg.gms.ui.SettingsActivityBurger.LastKlocation;
+import static org.microg.gms.ui.SettingsActivityBurger.SearchLocationApp;
+import static org.microg.gms.ui.SettingsActivityBurger.showTmp;
 
 public class SettingsActivity extends AbstractDashboardActivity {
-
     public SettingsActivity() {
         preferencesResource = R.xml.preferences_start;
         addCondition(Conditions.GCM_BATTERY_OPTIMIZATIONS);
@@ -56,6 +65,61 @@ public class SettingsActivity extends AbstractDashboardActivity {
 
         public FragmentImpl() {
             preferencesResource = R.xml.preferences_start;
+        }
+
+        @Override
+        public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+            super.onActivityCreated(savedInstanceState);
+            setHasOptionsMenu(true);
+        }
+
+        @Override
+        public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+            menu.add(0, 0, 0, "Last known location");
+            menu.add(0, 1, 0, "/system/etc/gps.conf");
+            menu.add(0, 2, 0, "Geolocation Map");
+            menu.add(0, 3, 0, "Google Account");
+            menu.add(0, 4, 0, "System specifics");
+            menu.add(0, 9, 0, R.string.prefcat_about);
+
+            super.onCreateOptionsMenu(menu, inflater);
+        }
+
+        @Override
+        public boolean onOptionsItemSelected(MenuItem item) {
+            Context mContext = getContext();
+            String tmp ="";
+            switch (item.getItemId()) {
+                case 0:
+                    LastKlocation(mContext);
+                    return true;
+                case 1:
+                    if (new File("/system/etc/gps.conf").exists()) {
+                        SettingsActivityBurger.showTmp(mContext,"@&$", "cat /system/etc/gps.conf", true);
+                    }
+                    else SettingsActivityBurger.showTmp(mContext,"@&$", "cat /vendor/etc/gps.conf", true);
+                    return true;
+                case 2:
+                    startActivity(new Intent(mContext,PlacePickerActivity.class));
+                    return true;
+                case 3:
+                    startActivity(new Intent(mContext,AccountSettingsActivity.class));
+                    return true;
+                case 4:
+                    SearchLocationApp(mContext);
+                    return true;
+                case 9:
+                    showTmp(mContext, getResources().getString(R.string.prefcat_about),
+                            "\n* microG Wiki: https://github.com/microg/android_packages_apps_GmsCore/wiki>microG Wiki"+
+                            "\n* microG support: https://forum.xda-developers.com/android/apps-games/app-microg-gmscore-floss-play-services-t3217616"+
+                            "\n* donate to MaR-V-iN: https://www.paypal.me/larma"+
+                            "\n* NanoDroid docs: https://gitlab.com/Nanolx/NanoDroid/blob/master/README.md"+
+                            "\n* NanoDroid support: https://forum.xda-developers.com/apps/magisk/module-nanomod-5-0-20170405-microg-t3584928",
+                            false);
+                    return true;
+                default:
+                    return super.onOptionsItemSelected(item);
+            }
         }
 
         @Override
