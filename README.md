@@ -9,7 +9,7 @@ microG GmsCore is a FLOSS (Free/Libre Open Source Software) framework to allow a
 
 What's different compared to the original microG GmsCore?
 
-* currently spoofed Play Services version: 14.7.99
+* currently spoofed Play Services version: 14.8.47
 
 * built as priv-app, set multiArch
 * fix build failing due missing com.vividsolutions:jts
@@ -36,7 +36,14 @@ What's different compared to the original microG GmsCore?
   * show microG settings in System Settings when on SDK 23 or newer
   * show microG settings in App Overview on SDK 24 or newer
 * [Fix Login issue on KK](https://github.com/PorygonZRocks/android_packages_apps_GmsCore/commit/dced4cd6a35dcb39e2e14350ae17e848d52bee2a) by PorygonZRocks
-* add com.google.android.geo.API_KEY by oF2pks
+* add com.google.android.geo.API_KEY, com.google.android.maps.v2.API_KEY by oF2pks
+* add 'burger' menu providing additional information by oF2pks
+  * 'last known location': latest knownLocation per providers (with powerRequirement int value)
+  * '/system/etc/gps.conf': view gps.conf
+  * 'Geolocation Map': World Map with current location (PlacePickerActivity)
+  * 'Google Account': shortcut to AccountSettingsActivity (intent)
+  * 'System specifics': Omnirom whitelist, <*.location> system packages (qualcomm, mediatek...), framework-res.apk config/overlay/location detection
+  * 'Info': useful links for microG/NanoDroid
 
 ### Download
 
