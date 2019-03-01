@@ -9,7 +9,7 @@ microG GmsCore is a FLOSS (Free/Libre Open Source Software) framework to allow a
 
 What's different compared to the original microG GmsCore?
 
-* currently spoofed Play Services version: 14.8.47
+* currently spoofed Play Services version: 15.0.90
 
 * built as priv-app, set multiArch
 * fix build failing due missing com.vividsolutions:jts
