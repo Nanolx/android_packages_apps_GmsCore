@@ -110,7 +110,7 @@ public class SettingsActivity extends AbstractDashboardActivity {
                     return true;
                 case 9:
                     showTmp(mContext, getResources().getString(R.string.prefcat_about),
-                            "\n* microG Wiki: https://github.com/microg/android_packages_apps_GmsCore/wiki>microG Wiki"+
+                            "\n* microG Wiki: https://github.com/microg/android_packages_apps_GmsCore/wiki"+
                             "\n* microG support: https://forum.xda-developers.com/android/apps-games/app-microg-gmscore-floss-play-services-t3217616"+
                             "\n* donate to MaR-V-iN: https://www.paypal.me/larma"+
                             "\n* NanoDroid docs: https://gitlab.com/Nanolx/NanoDroid/blob/master/README.md"+
