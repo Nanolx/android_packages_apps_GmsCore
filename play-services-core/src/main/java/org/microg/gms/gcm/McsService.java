@@ -171,9 +171,12 @@ public class McsService extends Service implements Handler.Callback {
         if(mDeviceIdleController == null && Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             try {
                 java.lang.reflect.Method method = Class.forName("android.os.ServiceManager").getMethod("getService", String.class);
-                IBinder binder = (IBinder) method.invoke(null, "Context.DEVICE_IDLE_CONTROLLER");
+                java.lang.reflect.Field field = Context.class.getField("DEVICE_IDLE_CONTROLLER");
+                IBinder binder = (IBinder) method.invoke(null, field.get(null));
                 if(binder != null)
                     mDeviceIdleController = IDeviceIdleController.Stub.asInterface(binder);
+            } catch (NoSuchFieldException e) {
+                e.printStackTrace();
             } catch (NoSuchMethodException e) {
                 e.printStackTrace();
             } catch (ClassNotFoundException e) {
@@ -511,16 +514,25 @@ public class McsService extends Service implements Handler.Callback {
                 logd("Target: " + resolveInfo);
                 Intent targetIntent = new Intent(intent);
 
-                // ToDO: Find out userID
-                if(mDeviceIdleController != null) {
+                if(mDeviceIdleController != null && Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                     try {
-                        mDeviceIdleController.addPowerSaveTempWhitelistApp(resolveInfo.activityInfo.packageName, 10000, 0, "GCM Push");
+                        java.lang.reflect.Method method = android.os.UserHandle.class.getMethod("getUserId", int.class);
+                        int userId = (int) method.invoke(null, getPackageManager().getApplicationInfo(msg.category, 0).uid);
+                        logd("Adding app " + msg.category + " for userId " + userId + " to the temp whitelist");
+                        mDeviceIdleController.addPowerSaveTempWhitelistApp(resolveInfo.activityInfo.packageName, 10000, userId, "GCM Push");
+                    } catch (NoSuchMethodException e) {
+                        e.printStackTrace();
+                    } catch (PackageManager.NameNotFoundException e) {
+                        e.printStackTrace();
+                    } catch (IllegalAccessException e) {
+                        e.printStackTrace();
+                    } catch (java.lang.reflect.InvocationTargetException e) {
+                        e.printStackTrace();
                     } catch (android.os.RemoteException e) {
                         e.printStackTrace();
                     }
                 }
 
-                targetIntent.setPackage(msg.category);
                 targetIntent.setComponent(new ComponentName(resolveInfo.activityInfo.packageName, resolveInfo.activityInfo.name));
                 sendOrderedBroadcast(targetIntent, receiverPermission);
             }
