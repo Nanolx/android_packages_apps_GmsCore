@@ -12,8 +12,7 @@
 	url = https://github.com/Nanolx/android_external_GmsLib.git
 [submodule "extern/vtm"]
 	path = extern/vtm
-	url = https://github.com/chris42/android_external_vtm.git
-	branch = buildfix-1806
+	url = https://github.com/microg/android_external_vtm.git
 [submodule "extern/RemoteDroidGuard"]
 	path = extern/RemoteDroidGuard
 	url = https://github.com/ThibG/android_packages_apps_RemoteDroidGuard.git
