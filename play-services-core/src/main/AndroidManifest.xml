@@ -421,7 +421,7 @@
 
         <!-- microG custom UI -->
 
-        <!-- microG Settings shown in Launcher on SDK 22 and older -->
+        <!-- microG Settings shown in Launcher -->
         <activity
             android:name="org.microg.gms.ui.SettingsActivity"
             android:icon="@mipmap/ic_microg_settings"
