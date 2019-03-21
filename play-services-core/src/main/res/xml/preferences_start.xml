@@ -29,7 +29,7 @@
         <org.microg.tools.ui.TintIconPreference
             android:icon="@drawable/add_account"
             android:summary="@string/pref_add_account_summary"
-            android:title="@string/pref_add_account">
+            android:title="@string/pref_add_account_title">
             <intent
                 android:targetClass="org.microg.gms.auth.login.LoginActivity"
                 android:targetPackage="com.google.android.gms"/>
@@ -79,7 +79,11 @@
         <org.microg.tools.ui.TintIconPreference
             android:icon="@drawable/location"
             android:summary="@string/pref_test_location_summary"
+<<<<<<< HEAD
             android:title="@string/pref_test_location">
+=======
+            android:title="@string/pref_test_location_title">
+>>>>>>> ale5000/add-google-account-and-location-test
             <intent
                 android:targetClass="org.microg.gms.ui.PlacePickerActivity"
                 android:targetPackage="com.google.android.gms"/>

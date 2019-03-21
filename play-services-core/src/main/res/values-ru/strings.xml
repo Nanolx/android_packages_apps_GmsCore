@@ -133,8 +133,8 @@
 
     <string name="pref_more_settings">Ещё</string>
 
-    <string name="pref_add_account">Аккаунт</string>
-    <string name="pref_add_account_summary">Добавить аккаунт google</string>
+    <string name="pref_add_account_title">Аккаунт</string>
+    <string name="pref_add_account_summary">Добавить аккаунт Google</string>
     <string name="pref_gcm_enable_mcs_summary">Google Cloud Messaging предоставляет push-уведомления, которые используются во многих в сторонних приложениях. Чтобы использовать их, вы должны включить регистрацию устройства.</string>
     <string name="pref_gcm_heartbeat_title">Интервал соединения Cloud Messaging</string>
     <string name="pref_gcm_heartbeat_summary">"Интервал в секундах, для использования серверов Google. Увеличение этого числа сократит потребление батареи, но может привести к задержкам push-сообщений.\nУстарело, будет изменено в следующем релизе."</string>
@@ -176,7 +176,8 @@
     <string name="pref_snet_custom_url_summary">Полный URL стороннего сервера, который отвечает на проверочные запросы SafetyNet</string>
     <string name="pref_snet_self_signed_title">Создавать сертификат самому</string>
     <string name="pref_snet_self_signed_summary">Вместо запросов на сервер подписывать SafetyNet локально, используя самостоятельно созданный сертификат. Большинство приложений будут отказываться использовать самоподписанные ответы.</string>
-    <string name="pref_test_location">Местоположение</string>
-    <string name="pref_test_location_summary">Протестировать Backend-программы поиска адреса и определения местоположения</string>
     <string name="pref_snet_status_self_signed_info">самоподписанный сертификат</string>
+
+    <string name="pref_test_location_title">Местоположение</string>
+    <string name="pref_test_location_summary">Протестировать Backend-программы поиска адреса и определения местоположения</string>
 </resources>
