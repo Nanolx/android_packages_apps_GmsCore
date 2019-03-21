@@ -79,11 +79,7 @@
         <org.microg.tools.ui.TintIconPreference
             android:icon="@drawable/location"
             android:summary="@string/pref_test_location_summary"
-<<<<<<< HEAD
-            android:title="@string/pref_test_location">
-=======
             android:title="@string/pref_test_location_title">
->>>>>>> ale5000/add-google-account-and-location-test
             <intent
                 android:targetClass="org.microg.gms.ui.PlacePickerActivity"
                 android:targetPackage="com.google.android.gms"/>
