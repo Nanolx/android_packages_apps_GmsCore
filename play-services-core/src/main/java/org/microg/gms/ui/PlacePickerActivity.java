@@ -16,6 +16,8 @@
 
 package org.microg.gms.ui;
 
+import android.content.ClipData;
+import android.content.ClipboardManager;
 import android.content.Intent;
 import android.location.Address;
 import android.location.Geocoder;
@@ -120,6 +122,24 @@ public class PlacePickerActivity extends AppCompatActivity implements Map.Update
                 finish();
             }
         });
+
+        findViewById(R.id.place_picker_select).setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                resultIntent.putExtra(LocationConstants.EXTRA_STATUS, SafeParcelUtil.asByteArray(new Status(CommonStatusCodes.SUCCESS)));
+                resultIntent.putExtra(LocationConstants.EXTRA_PLACE, SafeParcelUtil.asByteArray(place));
+                resultIntent.putExtra(LocationConstants.EXTRA_FINAL_BOUNDS, SafeParcelUtil.asByteArray(place.viewport));
+                setResult(RESULT_OK, resultIntent);
+                if (Build.VERSION.SDK_INT >= 11) {
+                    ClipboardManager clipboard = (ClipboardManager) getSystemService(PlacePickerActivity.this.CLIPBOARD_SERVICE);
+                    ClipData clip = ClipData.newPlainText("location", place.latLng.latitude+" "+place.latLng.longitude+" "+place.address);
+                    clipboard.setPrimaryClip(clip);
+                }
+                finish();
+                return true;
+            }
+        });
+
     }
 
     @SuppressWarnings("MissingPermission")
