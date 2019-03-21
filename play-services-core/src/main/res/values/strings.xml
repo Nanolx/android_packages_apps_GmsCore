@@ -16,8 +16,8 @@
 
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="gms_app_name">microG Services Core</string>
-    <string name="gms_settings_name">MicroG settings</string>
-    <string name="gms_settings_summary">Setup microG services core</string>
+    <string name="gms_settings_name">microG settings</string>
+    <string name="gms_settings_summary">Setup microG Services Core</string>
 
     <string name="just_a_sec">Just a sec…</string>
     <string name="google_account_label">Google</string>
