@@ -165,6 +165,4 @@ Dies kann einige Minuten dauern."</string>
     <string name="pref_snet_self_signed_summary">Statt einen Server zu nutzen, die SafetyNet signature lokal mit einem eigens erstellten Zertifikat signieren. Die meisten Apps werden diese Signaturen nicht akzeptieren.</string>
     <string name="pref_snet_status_self_signed_info">selbst-signiertes Zertifikat</string>
 
-    <string name="pref_test_location_title">Ortung</string>
-    <string name="pref_test_location_summary">Adressauflösung und Ortungsbackends testen</string>
 </resources>
