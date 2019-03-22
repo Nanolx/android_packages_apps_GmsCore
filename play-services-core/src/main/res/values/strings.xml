@@ -178,7 +178,4 @@ This can take a couple of minutes."</string>
     <string name="pref_snet_self_signed_summary">Instead of requesting a server, sign SafetyNet responses locally using a self-signed certificate. Most apps will refuse to use self-signed responses.</string>
     <string name="pref_snet_status_self_signed_info">self-signed certificate</string>
 
-    <string name="pref_test_location_title">Location</string>
-    <string name="pref_test_location_summary">Test address lookup and location backends</string>
-
 </resources>
