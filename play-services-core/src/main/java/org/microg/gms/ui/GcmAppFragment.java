@@ -99,6 +99,9 @@ public class GcmAppFragment extends ResourceSettingsFragment {
 
     private void updateAppDetails() {
         GcmDatabase.App app = database.getApp(packageName);
+        if (app == null) {
+            getActivity().finish();
+        }
         PreferenceScreen root = getPreferenceScreen();
 
         SwitchPreference wakeForDelivery = (SwitchPreference) root.findPreference(PREF_WAKE_FOR_DELIVERY);
