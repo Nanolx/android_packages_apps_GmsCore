@@ -8,7 +8,10 @@ import android.util.Log;
 import java.util.List;
 
 import static android.content.Intent.ACTION_PACKAGE_REMOVED;
+import static android.content.Intent.ACTION_PACKAGE_DATA_CLEARED;
+import static android.content.Intent.ACTION_PACKAGE_FULLY_REMOVED;
 import static android.content.Intent.EXTRA_DATA_REMOVED;
+import static android.content.Intent.EXTRA_REPLACING;
 
 public class UnregisterReceiver extends BroadcastReceiver {
     private static final String TAG = "GmsGcmUnregisterRcvr";
@@ -16,7 +19,10 @@ public class UnregisterReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(final Context context, Intent intent) {
         Log.d(TAG, "Package changed: " + intent);
-        if (ACTION_PACKAGE_REMOVED.contains(intent.getAction()) && intent.getBooleanExtra(EXTRA_DATA_REMOVED, false)) {
+        if ((ACTION_PACKAGE_REMOVED.contains(intent.getAction()) && intent.getBooleanExtra(EXTRA_DATA_REMOVED, false) &&
+                intent.getBooleanExtra(EXTRA_REPLACING, true)) ||
+                ACTION_PACKAGE_FULLY_REMOVED.contains(intent.getAction()) ||
+                ACTION_PACKAGE_DATA_CLEARED.contains(intent.getAction())) {
             final GcmDatabase database = new GcmDatabase(context);
             final String packageName = intent.getData().getSchemeSpecificPart();
             Log.d(TAG, "Package removed: " + packageName);
