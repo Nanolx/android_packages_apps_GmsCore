@@ -101,6 +101,7 @@ public class GcmAppFragment extends ResourceSettingsFragment {
         GcmDatabase.App app = database.getApp(packageName);
         if (app == null) {
             getActivity().finish();
+            return;
         }
         PreferenceScreen root = getPreferenceScreen();
 
