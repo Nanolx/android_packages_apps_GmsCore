@@ -25,7 +25,7 @@ public class UnregisterReceiver extends BroadcastReceiver {
                 ACTION_PACKAGE_DATA_CLEARED.contains(intent.getAction())) {
             final GcmDatabase database = new GcmDatabase(context);
             final String packageName = intent.getData().getSchemeSpecificPart();
-            Log.d(TAG, "Package removed: " + packageName);
+            Log.d(TAG, "Package removed or data cleared: " + packageName);
             final GcmDatabase.App app = database.getApp(packageName);
             if (app != null) {
                 new Thread(new Runnable() {
