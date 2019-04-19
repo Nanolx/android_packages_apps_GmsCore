@@ -15,4 +15,4 @@
 	url = https://github.com/microg/android_external_vtm.git
 [submodule "extern/RemoteDroidGuard"]
 	path = extern/RemoteDroidGuard
-url = https://github.com/ThibG/android_packages_apps_RemoteDroidGuard.git
+	url = https://github.com/ThibG/android_packages_apps_RemoteDroidGuard.git
