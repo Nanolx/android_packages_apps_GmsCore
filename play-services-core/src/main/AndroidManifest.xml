@@ -92,7 +92,15 @@
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
     <uses-permission android:name="android.permission.CHANGE_DEVICE_IDLE_TEMP_WHITELIST" tools:ignore="ProtectedPermissions"/>
 
-    <uses-sdk tools:overrideLibrary="com.takisoft.fix.support.v7.preference,android.support.graphics.drawable.animated,android.arch.lifecycle,android.arch.lifecycle.livedata.core,android.arch.lifecycle.viewmodel,android.arch.core"/>
+    <uses-sdk tools:overrideLibrary="
+        com.takisoft.fix.support.v7.preference,
+        android.support.graphics.drawable.animated,
+        android.arch.lifecycle,
+        android.arch.lifecycle.livedata.core,
+        android.arch.lifecycle.viewmodel,
+        android.arch.core,
+        android.support.v7.mediarouter,
+        android.support.v7.palette" />
 
     <application
         android:allowBackup="false"
@@ -399,6 +407,14 @@
             </intent-filter>
         </activity>
 
+        <!-- Cast -->
+
+        <service android:name="com.google.android.gms.cast.media.CastMediaRouteProviderService">
+            <intent-filter>
+                <action android:name="android.media.MediaRouteProviderService" />
+            </intent-filter>
+        </service>
+
         <!-- Chimera spoof -->
         <provider
             android:name="org.microg.gms.ChimeraSpoofProvider"
@@ -651,6 +667,12 @@
             </intent-filter>
         </service>
 
+        <service android:name="org.microg.gms.cast.CastDeviceControllerService">
+            <intent-filter>
+                <action android:name="com.google.android.gms.cast.service.BIND_CAST_DEVICE_CONTROLLER_SERVICE"/>
+            </intent-filter>
+        </service>
+
         <service android:name="org.microg.gms.DummyService">
             <intent-filter>
                 <action android:name="com.google.android.gms.plus.service.START"/>
@@ -659,7 +681,6 @@
                 <action android:name="com.google.android.gms.appstate.service.START"/>
                 <action android:name="com.google.android.gms.ads.service.START"/>
                 <action android:name="com.google.android.gms.accounts.ACCOUNT_SERVICE"/>
-                <action android:name="com.google.android.gms.cast.service.BIND_CAST_DEVICE_CONTROLLER_SERVICE"/>
                 <action android:name="com.google.android.gms.identity.service.BIND"/>
                 <action android:name="com.google.android.gms.wearable.BIND"/>
                 <action android:name="com.google.android.gms.auth.service.START"/>
