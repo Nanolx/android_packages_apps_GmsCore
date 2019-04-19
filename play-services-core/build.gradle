@@ -47,7 +47,7 @@ dependencies {
     implementation project(':vtm-jts')
     implementation project(':vtm-microg-theme')
 
-    compile 'org.conscrypt:conscrypt-android:2.0.0'
+    implementation 'org.conscrypt:conscrypt-android:2.0.0'
 }
 
 def execResult(...args) {
@@ -61,7 +61,7 @@ def execResult(...args) {
 
 def gmsVersion = "15.1.81"
 def gmsVersionCode = Integer.parseInt(gmsVersion.replaceAll('\\.', ''))
-def gitVersionBase = execResult('git', 'describe', '--tags', '--abbrev=0').substring(1)
+def gitVersionBase = execResult('git', 'tag', '--list', 'v*', '--sort=-v:refname').split('\n')[0].substring(1)
 def gitCommitCount = Integer.parseInt(execResult('git', 'rev-list', '--count', "v$gitVersionBase..HEAD"))
 def gitCommitId = execResult('git', 'show-ref', '--abbrev=7', '--head', 'HEAD').split(' ')[0]
 def gitDirty = execResult('git', 'status', '--porcelain').size() > 0
