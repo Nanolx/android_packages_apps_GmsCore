@@ -30,6 +30,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.IBinder;
+import android.os.IDeviceIdleController;
 import android.os.Looper;
 import android.os.Messenger;
 import android.os.Parcelable;
@@ -124,6 +125,7 @@ public class McsService extends Service implements Handler.Callback {
 
     private AlarmManager alarmManager;
     private PowerManager powerManager;
+    private IDeviceIdleController mDeviceIdleController;
     private static PowerManager.WakeLock wakeLock;
 
     private static long currentDelay = 0;
@@ -166,6 +168,26 @@ public class McsService extends Service implements Handler.Callback {
         heartbeatIntent = PendingIntent.getService(this, 0, new Intent(ACTION_HEARTBEAT, null, this, McsService.class), 0);
         alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
         powerManager = (PowerManager) getSystemService(POWER_SERVICE);
+        if(mDeviceIdleController == null && Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            try {
+                java.lang.reflect.Method method = Class.forName("android.os.ServiceManager").getMethod("getService", String.class);
+                java.lang.reflect.Field field = Context.class.getField("DEVICE_IDLE_CONTROLLER");
+                IBinder binder = (IBinder) method.invoke(null, field.get(null));
+                if(binder != null)
+                    mDeviceIdleController = IDeviceIdleController.Stub.asInterface(binder);
+            } catch (NoSuchFieldException e) {
+                e.printStackTrace();
+            } catch (NoSuchMethodException e) {
+                e.printStackTrace();
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            } catch (IllegalAccessException e) {
+                e.printStackTrace();
+            } catch (java.lang.reflect.InvocationTargetException e) {
+                e.printStackTrace();
+            }
+        }
+
         synchronized (McsService.class) {
             if (handlerThread == null) {
                 handlerThread = new HandlerThread();
@@ -459,6 +481,7 @@ public class McsService extends Service implements Handler.Callback {
         intent.setAction(ACTION_C2DM_RECEIVE);
         intent.setPackage(msg.category);
         intent.putExtra(EXTRA_FROM, msg.from);
+        intent.putExtra(EXTRA_MESSAGE_ID, msg.id);
         if (app.wakeForDelivery) {
             intent.addFlags(Intent.FLAG_INCLUDE_STOPPED_PACKAGES);
         } else {
@@ -485,6 +508,24 @@ public class McsService extends Service implements Handler.Callback {
             for (ResolveInfo resolveInfo : infos) {
                 logd("Target: " + resolveInfo);
                 Intent targetIntent = new Intent(intent);
+                if(mDeviceIdleController != null && Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                    try {
+                        java.lang.reflect.Method method = android.os.UserHandle.class.getMethod("getUserId", int.class);
+                        int userId = (int) method.invoke(null, getPackageManager().getApplicationInfo(msg.category, 0).uid);
+                        logd("Adding app " + msg.category + " for userId " + userId + " to the temp whitelist");
+                        mDeviceIdleController.addPowerSaveTempWhitelistApp(resolveInfo.activityInfo.packageName, 10000, userId, "GCM Push");
+                    } catch (NoSuchMethodException e) {
+                        e.printStackTrace();
+                    } catch (PackageManager.NameNotFoundException e) {
+                        e.printStackTrace();
+                    } catch (IllegalAccessException e) {
+                        e.printStackTrace();
+                    } catch (java.lang.reflect.InvocationTargetException e) {
+                        e.printStackTrace();
+                    } catch (android.os.RemoteException e) {
+                        e.printStackTrace();
+                    }
+                }
                 targetIntent.setComponent(new ComponentName(resolveInfo.activityInfo.packageName, resolveInfo.activityInfo.name));
                 sendOrderedBroadcast(targetIntent, receiverPermission);
             }
