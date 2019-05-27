@@ -55,6 +55,7 @@ import org.microg.gms.gcm.mcs.Setting;
 
 import java.io.Closeable;
 import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 import java.net.Socket;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -136,6 +137,10 @@ public class McsService extends Service implements Handler.Callback {
 
     private static int maxTtl = 24 * 60 * 60;
 
+    private Object deviceIdleController;
+    private Method getUserIdMethod;
+    private Method addPowerSaveTempWhitelistAppMethod;
+
     private class HandlerThread extends Thread {
 
         public HandlerThread() {
@@ -170,26 +175,23 @@ public class McsService extends Service implements Handler.Callback {
         heartbeatIntent = PendingIntent.getService(this, 0, new Intent(ACTION_HEARTBEAT, null, this, McsService.class), 0);
         alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
         powerManager = (PowerManager) getSystemService(POWER_SERVICE);
-        if(mDeviceIdleController == null && Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             try {
-                java.lang.reflect.Method method = Class.forName("android.os.ServiceManager").getMethod("getService", String.class);
-                java.lang.reflect.Field field = Context.class.getField("DEVICE_IDLE_CONTROLLER");
-                IBinder binder = (IBinder) method.invoke(null, field.get(null));
-                if(binder != null)
-                    mDeviceIdleController = IDeviceIdleController.Stub.asInterface(binder);
-            } catch (NoSuchFieldException e) {
-                e.printStackTrace();
-            } catch (NoSuchMethodException e) {
-                e.printStackTrace();
-            } catch (ClassNotFoundException e) {
-                e.printStackTrace();
-            } catch (IllegalAccessException e) {
-                e.printStackTrace();
-            } catch (java.lang.reflect.InvocationTargetException e) {
-                e.printStackTrace();
+                Field field = Context.class.getField("DEVICE_IDLE_CONTROLLER");
+                IBinder binder = (IBinder) Class.forName("android.os.ServiceManager")
+                        .getMethod("getService", String.class).invoke(null, field.get(null));
+                if (binder != null) {
+                    deviceIdleController = Class.forName("android.os.IDeviceIdleController$Stub")
+                            .getMethod("asInterface", IBinder.class).invoke(null, binder);
+                    getUserIdMethod = UserHandle.class.getMethod("getUserId", int.class);
+                    addPowerSaveTempWhitelistAppMethod = deviceIdleController.getClass()
+                            .getMethod("addPowerSaveTempWhitelistApp", String.class, long.class, int.class, String.class);
+                }
+            } catch (Exception e) {
+                Log.w(TAG, e);
             }
         }
-
         synchronized (McsService.class) {
             if (handlerThread == null) {
                 handlerThread = new HandlerThread();
@@ -513,18 +515,10 @@ public class McsService extends Service implements Handler.Callback {
                 Intent targetIntent = new Intent(intent);
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && app.wakeForDelivery) {
                     try {
-                        Field field = Context.class.getField("DEVICE_IDLE_CONTROLLER");
-                        IBinder binder = (IBinder) Class.forName("android.os.ServiceManager")
-                                .getMethod("getService", String.class).invoke(null, field.get(null));
-                        if (binder != null) {
-                            Object deviceIdleController = Class.forName("android.os.IDeviceIdleController$Stub")
-                                    .getMethod("asInterface", IBinder.class).invoke(null, binder);
-                            int userId = (int) UserHandle.class.getMethod("getUserId", int.class)
-                                    .invoke(null, getPackageManager().getApplicationInfo(packageName, 0).uid);
+                        if (getUserIdMethod != null && addPowerSaveTempWhitelistAppMethod != null && deviceIdleController != null) {
+                            int userId = (int) getUserIdMethod.invoke(null, getPackageManager().getApplicationInfo(packageName, 0).uid);
                             logd("Adding app " + packageName + " for userId " + userId + " to the temp whitelist");
-                            deviceIdleController.getClass()
-                                    .getMethod("addPowerSaveTempWhitelistApp", String.class, long.class, int.class, String.class)
-                                    .invoke(deviceIdleController, packageName, 10000, userId, "GCM Push");
+                            addPowerSaveTempWhitelistAppMethod.invoke(deviceIdleController, packageName, 10000, userId, "GCM Push");
                         }
                     } catch (Exception e) {
                         Log.w(TAG, e);
