@@ -30,7 +30,6 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.IBinder;
-import android.os.IDeviceIdleController;
 import android.os.Looper;
 import android.os.Messenger;
 import android.os.Parcelable;
@@ -128,7 +127,6 @@ public class McsService extends Service implements Handler.Callback {
 
     private AlarmManager alarmManager;
     private PowerManager powerManager;
-    private IDeviceIdleController mDeviceIdleController;
     private static PowerManager.WakeLock wakeLock;
 
     private static long currentDelay = 0;
@@ -175,7 +173,6 @@ public class McsService extends Service implements Handler.Callback {
         heartbeatIntent = PendingIntent.getService(this, 0, new Intent(ACTION_HEARTBEAT, null, this, McsService.class), 0);
         alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
         powerManager = (PowerManager) getSystemService(POWER_SERVICE);
-
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             try {
                 Field field = Context.class.getField("DEVICE_IDLE_CONTROLLER");
