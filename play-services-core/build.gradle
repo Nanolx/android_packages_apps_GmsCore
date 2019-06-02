@@ -42,8 +42,6 @@ dependencies {
     api "org.slf4j:slf4j-api:1.7.25"
     api "uk.uuid.slf4j:slf4j-android:1.7.25-1"
 
-    implementation "com.vividsolutions:jts:1.13"
-
     implementation project(':microg-ui-tools')
     implementation project(':play-services-api')
     implementation project(':play-services-cast-api')
