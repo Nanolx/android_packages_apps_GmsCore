@@ -26,11 +26,11 @@
     <permission
         android:name="com.google.android.c2dm.permission.SEND"
         android:label="@string/perm_c2dm_send_label"
-        android:protectionLevel="signature"/>
+        android:protectionLevel="normal"/>
     <permission
         android:name="com.google.android.gtalkservice.permission.GTALK_SERVICE"
         android:label="@string/perm_gtalk_svc_label"
-        android:protectionLevel="signature"/>
+        android:protectionLevel="normal"/>
 
     <permission-tree
         android:name="com.google.android.googleapps.permission.GOOGLE_AUTH"
